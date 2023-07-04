@@ -38,6 +38,11 @@ def decode_unicode(data):
     return bytes(data, 'utf-8').decode('unicode_escape')
 
 
+@app.get("/")
+def sample():
+	return "server up"
+
+
 @app.post('/main')
 def clusterNews(news: News):
     dicted_items = [item for item in news.data]
