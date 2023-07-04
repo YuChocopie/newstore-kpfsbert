@@ -26,6 +26,12 @@ class News(BaseModel):
 
 
 app = FastAPI()
+# //========================
+# model_path = "kpfsbert-base" # sbert
+model_path = "yunaissance/kpfbert-base"  # sbert
+# model_path = "bongsoo/kpf-sbert-v1.1"  # sbert
+# kpfSBERT 모델 로딩
+model = SentenceTransformer(model_path)
 
 
 def decode_unicode(data):
@@ -71,13 +77,6 @@ def hdbscan_process(corpus, corpus_embeddings, min_cluster_size, min_samples, um
 
 
 def main(json):
-    # //========================
-    # model_path = "kpfsbert-base" # sbert
-    model_path = "yunaissance/kpfbert-base"  # sbert
-    # model_path = "bongsoo/kpf-sbert-v1.1"  # sbert
-    # kpfSBERT 모델 로딩
-    model = SentenceTransformer(model_path)
-
     cluster_mode = 'title'
     # Data Loading to clustering
     # DATA_PATH = 'data/newstrust/newstrust_sample.json'
